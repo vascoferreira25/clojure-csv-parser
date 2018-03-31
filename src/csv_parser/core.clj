@@ -42,6 +42,9 @@
      :credits csv-parser/str->float})
 
   ;; Get csv as map
+  ;; default comma separated values and `\r\n` linebreaks
+  (csv-parser/csv-mapv csv-file column-names)
+  ;; change `separator` and `line-break` (without backslash)
   (csv-parser/csv-mapv csv-file column-names \",\" \"\r\n\")
 
   ;; Bind csv to dataset variable
@@ -53,11 +56,13 @@
 
   ;; Get rows 2 and 3
   (csv-parser/row dataset [1 2])"
-  [csv-file
-   separator ","
-   line-break "\r\n"
-   column-names]
-  (let [rows (parse-csv csv-file separator line-brake)]
+  ([csv-file
+   column-names] (csv-mapv csv-file column-names "," "\r\n"))
+  ([csv-file
+    column-names
+    separator
+    line-break]
+   (let [rows (parse-csv csv-file separator line-break)]
   ;; Create Vector with all the maps
   (mapv (fn
           ;; Take a row
@@ -78,7 +83,7 @@
                   ;; Create map with key-value pairs in vectors
                   ;; ([:col-name value] [:col-name value] [:col-name value]])
                   (map vector (vec (keys column-names)) unmapped-row)))
-        rows)))
+        rows))))
 ;; Get Data
 (defn column
   "Get all rows for column `col-name`"
