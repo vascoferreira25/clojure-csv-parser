@@ -1,4 +1,4 @@
-(defproject csv-parser "0.1.5-SNAPSHOT"
+(defproject csv-parser "0.1.6-SNAPSHOT"
   :description "CSV Parser, transforms csv file in vector of maps."
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"

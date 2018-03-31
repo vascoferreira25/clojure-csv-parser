@@ -20,15 +20,12 @@
    v
    conversion-table]
   ((get conversion-table k) v))
-
 (defn str->int
   [str]
   (Integer. str))
-
 (defn str->float
   [str]
   (Float. str))
-
 ;; Convert CSV string to vectors
 (defn csv-mapv
   "Takes a file name `dataset.csv` and map `column-names` with column names and
@@ -45,7 +42,7 @@
      :credits csv-parser/str->float})
 
   ;; Get csv as map
-  (csv-parser/csv-mapv csv-file column-names)
+  (csv-parser/csv-mapv csv-file column-names \",\" \"\r\n\")
 
   ;; Bind csv to dataset variable
   (def dataset
@@ -57,8 +54,10 @@
   ;; Get rows 2 and 3
   (csv-parser/row dataset [1 2])"
   [csv-file
+   separator ","
+   line-break "\r\n"
    column-names]
-  (let [rows (parse-csv csv-file)]
+  (let [rows (parse-csv csv-file separator line-brake)]
   ;; Create Vector with all the maps
   (mapv (fn
           ;; Take a row
@@ -80,14 +79,12 @@
                   ;; ([:col-name value] [:col-name value] [:col-name value]])
                   (map vector (vec (keys column-names)) unmapped-row)))
         rows)))
-
 ;; Get Data
 (defn column
   "Get all rows for column `col-name`"
   [csv
    col-name]
   (mapv col-name csv))
-
 (defn row
   "Get data of rows `index-vector`: [1] or [1 2 3]"
   [csv
@@ -95,7 +92,6 @@
   (let
       [rows (map csv index-vector)]
     (mapv vals rows)))
-
 ;; Example
 ;; Get file
 ;; (def csv-file "grades.csv")
