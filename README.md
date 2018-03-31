@@ -6,7 +6,7 @@ A simple csv file parser for Clojure.
 
 1. Download the master branch
 2. Go to the folder and install it to the local repositories with `lein install`
-3. Add `csv-parser "0.1.5-SNAPSHOT` to `:dependencies` in your `project.clj`
+3. Add `[csv-parser "0.1.5-SNAPSHOT]` to `:dependencies` in your `project.clj`
 4. Add `(:require [csv-parser.core :as csv-parser])` in the _namespace_ of `core.clj`
 
 ## Usage
