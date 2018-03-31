@@ -23,30 +23,30 @@ A simple csv file parser for Clojure.
 ;; Bind csv to dataset variable
 (def dataset
   (csv-parser/csv-mapv csv-file column-names))
-; => [{:subject-name "Finance", :grades 19, :credits 7.5} 
-      {:subject-name "Management Strategy", :grades 17, :credits 7.5} 
-      {:subject-name "Methodology", :grades 13, :credits 7.5} 
-      {:subject-name "Math I", :grades 18, :credits 7.5} 
-      {:subject-name "Economy", :grades 15, :credits 7.5} 
-      {:subject-name "Marketing Management", :grades 18, :credits 7.5} 
-      {:subject-name "Math II", :grades 15, :credits 7.5} 
-      {:subject-name "Accounting", :grades 16, :credits 7.5} 
+; => [{:subject-name "Finance", :grades 19, :credits 7.5}
+      {:subject-name "Management Strategy", :grades 17, :credits 7.5}
+      {:subject-name "Methodology", :grades 13, :credits 7.5}
+      {:subject-name "Math I", :grades 18, :credits 7.5}
+      {:subject-name "Economy", :grades 15, :credits 7.5}
+      {:subject-name "Marketing Management", :grades 18, :credits 7.5}
+      {:subject-name "Math II", :grades 15, :credits 7.5}
+      {:subject-name "Accounting", :grades 16, :credits 7.5}
       {:subject-name "Thesis", :grades 18, :credits 60.0}]
-  
+
 ;; Count data
 (count dataset)
-  
+
 ;; Get all rows in column :grades
 (csv-parser/column dataset :grades)
 ; => [19 17 13 18 15 18 15 16 18]
 
 (def grades
-  (csv-parser/column dataset :grades))
+  (csv-parser/column dataset :grades "," "\r\n"))
 
 ;; Calculate mean grade (ratio)
 (/ (reduce + grades) (count grades))
-; => 149/9  
- 
+; => 149/9
+
 ;; Calculate mean grade (float)
 (float (/ (reduce + grades) (count grades)))
 ; => 16.555555
