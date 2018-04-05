@@ -24,14 +24,14 @@ A simple csv file parser for Clojure.
 (def dataset
   (csv-parser/csv-mapv csv-file column-names))
 ; => [{:subject-name "Finance", :grades 19, :credits 7.5}
-      {:subject-name "Management Strategy", :grades 17, :credits 7.5}
-      {:subject-name "Methodology", :grades 13, :credits 7.5}
-      {:subject-name "Math I", :grades 18, :credits 7.5}
-      {:subject-name "Economy", :grades 15, :credits 7.5}
-      {:subject-name "Marketing Management", :grades 18, :credits 7.5}
-      {:subject-name "Math II", :grades 15, :credits 7.5}
-      {:subject-name "Accounting", :grades 16, :credits 7.5}
-      {:subject-name "Thesis", :grades 18, :credits 60.0}]
+; =>  {:subject-name "Management Strategy", :grades 17, :credits 7.5}
+; =>  {:subject-name "Methodology", :grades 13, :credits 7.5}
+; =>  {:subject-name "Math I", :grades 18, :credits 7.5}
+; =>  {:subject-name "Economy", :grades 15, :credits 7.5}
+; =>  {:subject-name "Marketing Management", :grades 18, :credits 7.5}
+; =>  {:subject-name "Math II", :grades 15, :credits 7.5}
+; =>  {:subject-name "Accounting", :grades 16, :credits 7.5}
+; =>  {:subject-name "Thesis", :grades 18, :credits 60.0}]
 
 ;; Count data
 (count dataset)
